@@ -32,6 +32,7 @@
       padding: 10px;
       font-size: 16px;
       margin: 0px 0;
+      maxlength:7;
       text-align: center;
       color: rgb(6, 85, 39);
       width:70%;
@@ -88,8 +89,9 @@
 <br><br>
 <center>
 <div class="pass">
-<image src="https://icons.veryicon.com/png/o/application/awesome-common-free-open-source-icon/user-circle-3.png" height="70">
-
+<h1 height="70">
+  &#xf2bb
+</h1>
   <h1>Loging</h1>
   <p class="log">Log in to go to the main website.</p>
   <div id="login">
@@ -118,7 +120,7 @@
   <script>
     function checkPassword() {
       const password = document.getElementById("password").value;
-      const correctPassword = "suman7204093@%%***";
+      const correctPassword = "7204093";
 
       if (password === correctPassword) {
         document.getElementById("content").style.display = "block";
