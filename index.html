@@ -1,197 +1,901 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="index, follow">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Password Protected Page</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+
+  <title>Services </title>
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-image: url('https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg'); /* ইমেজের লিংক এখানে দাও */
-      background-size: cover;      /* ইমেজ স্ক্রিন ফিট করবে */
-      background-repeat: no-repeat;
-      background-position: center center;  /* ইমেজ সেন্টারে থাকবে */
-      min-height: 100vh;           /* পুরো স্ক্রিন হাইট */
+    :root{
+      --navy: rgba(0,0,128,1);
+      --red: rgba(255,0,0,1);
+      --blue: rgba(0,0,255,1);
+      --bg-grad: linear-gradient(150deg, teal,aqua);
+      --card-bg: white;
+      --muted: #666;
+      --max-width: 1100px;
     }
-    .main{color:white;
-        text-shadow: 1px 1px 5px rgb(245, 241, 241);
-        
-          margin: 0px;
-          text-align: center;}
-    .name{font-size: 50px;}
-    #content {
-      display: none;
-      background-color: white;
+    *{box-sizing:border-box}
+ body{
+      margin:0;
+      font-family: Inter, system-ui, Arial, sans-serif;
+      background:#f6f8fb;
+      color:#111;
+
+    }
     
-      width: 90%;
-      border-radius: 5px;
+    .container{ width:100%; max-width:var(--max-width); }
 
-   
-     
+    .hero{
+      background:var(--bg-grad);
+      color:white;
+      padding:28px;
+      border-radius:12px;
+      margin-bottom:20px;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      align-items:center;
     }
-    .password{padding: 10px;
-      font-size: 16px;
-      margin: 0px 0;
-      text-align: center;
-      color:rgb(18, 150, 64);
-      width:70%;
-      border:2px solid rgb(250, 250, 250);
-      border-radius:5px;}
-    input[type="password"], button {
-      padding: 10px;
-      font-size: 16px;
-      margin: 0px 0;
-      maxlength:7;
-      text-align: center;
-      color: rgb(6, 85, 39);
-      width:70%;
-      border:2px solid rgb(250, 250, 250);
-      border-radius:5px;
-      cursor: pointer;
+    .hero .title{ font-size:20px; font-weight:700; }
+    .hero .subtitle{ font-size:14px; opacity:.95; color:#eaf0ff; margin-top:6px; }
+    .cta{
+      background:var(--blue); color:white; border:none;
+      padding:10px 16px; border-radius:10px; cursor:pointer;
     }
-    .pass{background-color:rgba(0,0,0,0.4);
-      width:90%;
-      border:solid 2px rgb(255, 255, 255);
-      border-radius: 10px;
-      padding: 20px;
-      color:white;}
-      .log{margin-top:-20px;}
-      .succ{color:#0a806a;
-        padding: 20px;
-        margin-top:-20px;
-        text-align: justify;
-        
 
-            }
+    .services{
+      display:grid;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap:16px;
+      margin-top:18px;
+    }
+    .card{
+      background:var(--card-bg);
+      border-radius:12px;
+      padding:16px;
+      box-shadow:0 6px 18px rgba(12,12,20,0.06);
+      cursor:pointer;
+      transition:.2s;
+    }
+    .card:hover{ transform:translateY(-6px); box-shadow:0 18px 40px rgba(12,12,20,0.08); }
+    .card .icon{
+      font-size:26px; width:44px; height:44px;
+      display:inline-grid; place-items:center;
+      border-radius:8px; background:linear-gradient(135deg,var(--navy),var(--blue)); color:#fff;
+    }
+    .card h4{ margin:0; font-size:16px; }
+    .card p{ margin:0; font-size:13px; color:var(--muted); }
 
-     .visit{color:white;
-            background-color:blue;
-            width:60%;
-            padding:10px;
-            border-radius: 5px;
-            font-size: 30px;
-            cursor: pointer;
-            
+    .modal-overlay{
+      position:fixed; inset:0; background:rgba(0,0,0,0.45);
+      display:none; align-items:center; justify-content:center;
+      z-index:1200; padding:20px;
+    }
+    .modal{
+      width:100%; max-width:640px; background:#fff; border-radius:12px;
+      overflow:hidden; animation:pop .14s ease;
+    }
+    @keyframes pop{ from{transform:translateY(8px) scale(.98);opacity:0} to{opacity:1} }
+    .modal-head{ padding:16px; background:var(--bg-grad); color:#fff; display:flex; justify-content:space-between; }
+    .modal-body{ padding:18px; background:#fafbfd; }
+    .docs-list{ padding-left:18px; }
+    .modal-foot{ padding:14px; display:flex; gap:8px; justify-content:flex-end; background:#fff; border-top:1px solid #eee; }
+    .btn-outline {
+  background:#fff;            /* সাদা ব্যাকগ্রাউন্ড */
+  border:1px solid var(--blue); 
+  color:var(--blue);          /* নীল লেখা */
+  padding:8px 12px; 
+  border-radius:8px; 
+  font-weight:600;
+  cursor:pointer;
+  transition:0.2s;
 
-            }  
+text-decoration: none; background:teal;
+}
+.btn-outline:hover {
+  background:var(--blue);     /* hover করলে নীল হবে */
+  color:#fff;
+}
+    .btn-primary{ background:var(--red); color:#fff; border:0; padding:8px 12px; border-radius:8px;  text-decoration: none;background:green; color:white;}
 
-    .cancel{color:white;
-            background-color:green;
-            width:20%;
-            padding:10px;
-            border-radius: 5px;
-            cursor:pointer;}
-
-          .a{text-decoration: none;}  
-         
-  </style>
-</head>
-<body bgcolor="gray">
-  <center>
-  <div class="main">
-
-  <p class="name">JANA ONLINE SERVICE</p>
   
+
+
+
+
+.dd{position:relative;
+	display:inline-block;}
+.dd-btn{width:170px;
+	color:white;
+	background:#14A4B5;
+	border:none;
+	text-align:left;}
+
+.dd-content{position:absolute;
+	    width:100%;
+	    height:0px;
+	background-color:white;
+	    overflow: hidden;
+		transition: height 1s;
+		box-shadow:0px 8px 36px #07FAFA;}
+.dd:hover > .dd-content{height:400px;}
+
+.dd-content > a {text-decoration:none;
+		display:block;
+		color:teal;	
+		}
+
+
+.dd > .dd-content > a:hover{background:#3FEFF9;
+		color:044F53;
+		}
+
+
+
+.add-Addmission{width:200px;
+	color:#14A4B5;
+	background:white;
+	border:none;
+	text-align:left;}
+
+
+
+.model{background-color:white;
+
+     border:solid 3px #14A4B5;
+position: fixed;   /* এটাতে div টা স্ক্রিনে স্থায়ী হবে */
+  top: 0;            /* উপর থেকে 0 px */
+  left: 0;           /* বাঁ দিক থেকে 0 px */
+  width: 100%;       /* পুরো প্রস্থ জুড়ে */
+
+
+  z-index: 1000;
+}
+
+.md{background-color:#14A4B5;
+color:white;
+font-size:20px;
+font-family: "Segoe UI", Arial, sans-serif;
+font-weight: 700;
+}
+
+
+.spanl{width:30%;
+  padding:35px;
+color:yellow;
+text-align: right;
+
+
+  
+
+
+  border-radius: 6px;
+  cursor: pointer;
+
+
+}
+
+.icon {
+  font-size: 20px;
+  color: teal;
+  margin-right: 6px;
+}
+.lgnm{border:solid 3px #14A4B5;}
+.lg{font-family: "Segoe UI", Arial, sans-serif;
+font-size:40px;
+font-weight: 700;
+width:44%;
+padding:20px;
+color:#14A4B5;
+text-shadow: 2px 1px 1px blue;}
+
+.lg2{font-family: "Segoe UI", Arial, sans-serif;
+font-size:40px;
+font-weight: 700;
+width:9%;
+padding:20px;
+color:#14A4B5;
+text-shadow: 2px 1px 1px blue;}
+
+
+.mai{top-margin:20px;}
+
+
+
+
+
+
+.pc-only {
+  display: block;
+}
+
+/* Mobile এ লুকাবে */
+@media (max-width: 768px) {
+  .pc-only {
+    display: none;
+  }
+}
+
+
+
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    background:#14A4B5;
+  color:white;
+    padding:10px 20px;
+   
+  }
+
+
+  .span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size:14px;
+    color:white;
+font-family: "Segoe UI", Arial, sans-serif;
+font-size:18px;
+font-weight: 650;
+
+  }
+  .logout-btn {
+    margin-left:auto;
+    padding:6px 12px;
+    border:none;
+    border-radius:6px;
+    background:white;
+    color:teal;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.2s;
+  }
+  .logout-btn:hover {
+    background:yellow;
+ color: red;
+  }
+  @media(max-width:600px){
+  .top-bar{
+    flex-direction: column;
+    align-items: center;  /* <-- Mobile-এ center-align */
+    gap: 12px;         
+    }
+    .logout-btn{
+      margin-left:0;
+    }
+  }
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<div class="model">
+
+<div class="top-bar">
+  <span class="span"><i class="fas fa-phone"></i> +91 9907992247</span>
+  <span class="span"><i class="fas fa-envelope"></i> janaonlineService4@gmail.com</span>
+  <button class="logout-btn" onclick="logoutPage()">Logout</button>
+</div>
+
+
+<div class="pc-only">
+<div class="lgnm">
+<span class="lg">
+<image src="https://lh3.googleusercontent.com/p/AF1QipP1F4BrDvZdgpO1RDoGI2DFyJjnrfBmpkjeKwZN=s1360-w1360-h1020-rw"width="90px">
+</span>
+<span class="lg"> Jana Online Service</span>
+<span class="lg"><i class="fas fa-cogs"></i></span>
+</div>
+<div class="dd">
+<button class="dd-btn"><font size="5" face="arial rounded mt">&#9776 &nbsp; Menu</font></button>
+<div class="dd-content">
+	<a href="https://suman9907bit.github.io/Jana-online-service-/"><font size="3" face="arial rounded mt" >&nbsp;<i class="fas fa-home"></i> &nbsp;Home</font></a><br>
+
+	<a href="filD:///D:/JANA%20ONLINE%20SERVICE/Satting/About.html"><font size="3" face="arial rounded mt">&nbsp;<i class="fas fa-user"></i>&nbsp; About</font></a><br>
+
+	<a href="https://www.google.com/search?q=jana+online+service+kakdwip&rlz=1C1CHBF_enIN1133IN1133&oq=jana+online+service+kakdwip&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGEAyCggCEAAYgAQYogQyBwgDEAAY7wUyCggEEAAYgAQYogQyBwgFEAAY7wUyCggGEAAYgAQYogTSAQg0MDkzajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lpg=cid:CgIgAQ%3D%3D,ik:CAoSLEFGMVFpcE9TR2E4ZkRqb1dUSk5Yb1ZjSWxNQjkzSmVXNS10Q09SSnlSaVdy"><font size="3" face="arial rounded mt">&nbsp;<i class="fas fa-image"></i> &nbsp;Gallery </font></a><br>
+
+	<a href="https://suman9907bit.github.io/service-page/"><font size="3" face="arial rounded mt">&nbsp;<i class="fas fa-cogs"></i> &nbsp;Settings </font></a><br>
+
+	<a href="https://suman9907bit.github.io/membership-form-business/"><font size="3" face="arial rounded mt">&nbsp;<i class="fas fa-file-alt"></i>&nbsp; Form</font></a><br>
+
+	<a href="https://suman9907bit.github.io/internet-page/"><font size="3" face="arial rounded mt">&nbsp;<i class="fas fa-share-alt"></i>&nbsp; Social Media</font></a><br>
+
+	<a href="https://suman9907bit.github.io/contact-page/"><font size="3" face="arial rounded mt">&nbsp;<i class="fas fa-phone"></i> &nbsp;Contact Us</font></a><br><br><br><br><br><br><br><br>
+
+	<hr color="teal" size="5">
+	</div></div>
+	
+
+
+
+<div class="dd">
+<button class="add-Addmission"><font size="3" face="arial rounded mt">Online College Work</font></button>
+<div class="dd-content"><BR>
+
+<a href="https://www.sundarbanmahavidyalaya.in/"><font size="2" face="arial rounded mt"><li>&nbsp; <i class="fas fa-file-alt"></i> &nbsp;Sundarban Mahavidalay</li></font></a><br>
+
+	<a href="https://wbcap.in/"><font size="2" face="arial rounded mt"><li>&nbsp; <i class="fas fa-file-alt"></i> &nbsp;College Admission </li></font></a></li><br>
+
+<a href="https://svmcm.wbhed.gov.in/"><font size="2" face="arial rounded mt"> <li SIZE="5">&nbsp; <i class="fas fa-file-alt"></i> &nbsp;Swami vivekananda  &nbsp;  &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Scholarship</li></font></a><br>
+
+
+<li>
+<a href="Ehttps://svmcm.wbhed.gov.in/"><font<br><br>
+<br><br><br><br><br><br><br><br><br><br> <br><br></a>
+</li>
+
+
+	<hr color="teal" size="5">
+	
+	</div></div>  
+
+
+
+
+<div class="dd">
+<button class="add-Addmission"><font size="3" face="arial rounded mt">Governments Service</font></button>
+<div class="dd-content"><BR>
+
+<a href="https://uidai.gov.in/en/my-aadhaar/get-aadhaar"><font size="2" face="arial rounded mt"><li>&nbsp; <i class="fas fa-file-alt"></i> &nbsp;Aadhar service</li></font></a><br>
+
+<a href="https://www.pan.utiitsl.com/"><font size="2" face="arial rounded mt"><li>&nbsp; <i class="fas fa-file-alt"></i> &nbsp;PAN card service</li></font></a><br>
+
+<a href="https://voters.eci.gov.in/"><font size="2" face="arial rounded mt"><li>&nbsp; <i class="fas fa-file-alt"></i> &nbsp;Voter card service</li></font></a><br>
+
+
+<a href="https://food.wb.gov.in/"><font size="2" face="arial rounded mt"><li>&nbsp; <i class="fas fa-file-alt"></i> &nbsp;Ration Card service</li></font></a><br>
+
+<a href="https://wbpds.wb.gov.in/(S(2yp45gprnrk43xcvnhzdnrja))/Benificiary_Deatils_Update_by_Aadhaar.aspx"><font size="2" face="arial rounded mt" color="red"><li>&nbsp; <i class="fas fa-file-alt"></i> &nbsp;Ration card correction</li></font></a><br>
+
+<a href="https://wbpds.wb.gov.in/(S(idw4pjtlbt1ymtorgfenr3qf))/Ekyc_otp.aspx"><font size="2" face="arial rounded mt" color="red"><li>&nbsp; <i class="fas fa-file-alt"></i> &nbsp;Ration Card Aadharlink</li></font></a><br>
+
+
+<a href="https://wbpds.wb.gov.in/(S(yxod2fdgn2kukfkavigskpcp))/Digitalportal/index.aspx"><font size="2" face="arial rounded mt" color="red"><li>&nbsp; <i class="fas fa-file-alt"></i> &nbsp;Ration Card Exiting</li></font></a><br>
+
+<a href="https://wbpds.wb.gov.in/(S(g2500r54xtupiscvmvqbkat5))/CheckApplicationStatus.aspx"><font size="2" face="arial rounded mt" color="red"><li>&nbsp; <i class="fas fa-file-alt"></i> &nbsp;Ration Card status chack</li></font></a><br>
+
+<a href="https://wbpds.wb.gov.in/(S(3ximb2qmm0xwhvkkpky1j3m3))/E_Card_Download.aspx"><font size="2" face="arial rounded mt" color="red"><li>&nbsp; <i class="fas fa-file-alt"></i> &nbsp;Ration Card Download</li></font></a><br>
+
+
+
+<a href="https://www.passportindia.gov.in/AppOnlineProject/welcomeLink#"><font size="2" face="arial rounded mt"><li>&nbsp; <i class="fas fa-file-alt"></i> &nbsp;Passport License</li></font></a><br>
+
+<a href="https://transport.wb.gov.in/governance-services/driving-license/"><font size="2" face="arial rounded mt"><li>&nbsp; <i class="fas fa-file-alt"></i> &nbsp;Driving License</li></font></a><br>
+<br><br>
+<br><br><br><br><br><br><br>
+	<hr color="teal" size="5">
+	</div>
+	</div>
+
+
+
+
+<div class="dd">
+<button class="add-Addmission"><font size="3" face="arial rounded mt">Online Shopping</font></button>
+<div class="dd-content"><BR>
+
+<a href="https://www.amazon.in/?&tag=googhydrabk1-21&ref=pd_sl_5szpgfto9i_e&adgrpid=155259813593&hvpone=&hvptwo=&hvadid=674893540034&hvpos=&hvnetw=g&hvrand=5934591725694053297&hvqmt=e&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9301676&hvtargid=kwd-64107830&hydadcr=14452_2316413&gad_source=1"><font size="2" face="arial rounded mt"><li>&nbsp; <i class="fas fa-file-alt"></i> &nbsp;Amazon sopping</li></font></a><br>
+
+	<a href="https://www.flipkart.com/"><font size="2" face="arial rounded mt"><li>&nbsp; <i class="fas fa-file-alt"></i> &nbsp;Filipcart sopping</li></font></a></li><br>
+
+<a href="Ehttps://www.meesho.com/?srsltid=AfmBOopXO2Tm9sLOlE_d0s3_r_25cSEeL2O7vjT-KZvRAt1fFoBbAo2B"><font size="2" face="arial rounded mt"> <li SIZE="5">&nbsp; <i class="fas fa-file-alt"></i> &nbsp;Meso shopping </li></font></a><br>
+
+<a href="https://www.myntra.com/?utm_source=dms_google&utm_medium=searchbrand_cpc&utm_campaign=dms_google_searchbrand_cpc_Search_Brand_Myntra_Brand_India_BM_TROAS_SOK_New&gad_source=1&gclid=Cj0KCQjww5u2BhDeARIsALBuLnMDPEkelBQL_1u6nUJrpEWg0jQQ2YAYxQEENGkFDbZYOSIRyyiLlxsaAqW3EALw_wcB"><font size="2" face="arial rounded mt"> <li> &nbsp; <i class="fas fa-file-alt"></i> &nbsp;Myntra</li></font></a><br>
+
+<a href="D:\JANA ONLINE SERVICE\JANA OS orginal.html"><font size="2" face="arial rounded mt"> <li> &nbsp; <i class="fas fa-file-alt"></i> &nbsp;Ajiu</li></font></a><br>
+
+<a href="https://www.nykaa.com/"><font size="2" face="arial rounded mt"> <li> &nbsp; <i class="fas fa-file-alt"></i> &nbsp;Nykka</li></font></a><br>
+
+<a href="https://www.sofikart.com/"><font size="2" face="arial rounded mt"> <li> &nbsp; <i class="fas fa-file-alt"></i> &nbsp;Sofi</li></font></a><br>
+
+<br><br>
+<br><br><br><br>
+	<hr color="teal" size="5">
+	</div>
+	</div>
+
+<div class="dd">
+<button class="add-Addmission"><font size="3" face="arial rounded mt">Helping website</font></button>
+<div class="dd-content"><BR>
+
+<a href="https://www.freepdfconvert.com/"><font size="2" face="arial rounded mt"><li>&nbsp; <i class="fas fa-file-alt"></i> &nbsp;PDF converter</li></font></a><br>
+
+<a href="https://www.remove.bg/"><font size="2" face="arial rounded mt"><li>&nbsp; <i class="fas fa-file-alt"></i> &nbsp;Background Remover</li></font></a><br>
+
+<a href="https://translate.google.com/?sl=en&tl=bn&op=translate"><font size="2" face="arial rounded mt"><li>&nbsp; <i class="fas fa-file-alt"></i> &nbsp;Google Translater</li></font></a><br>
+
+<a href="D:\JANA ONLINE SERVICE\JANA OS orginal.html"><font size="2" face="arial rounded mt"><li>&nbsp; <i class="fas fa-file-alt"></i> &nbsp;PDF convater</li></font></a><br>
+
+
+
+<br><br><br><br><br><br><br><br>
+<br><br>
+<br><br>
+	<hr color="teal" size="5">
+	</div>
+	</div>
+
 
 
 
 </div>
-<p style="color:white;text-align:center;font-size:25px;margin-top: -35px;;">kakdwip,South 24 PGS, West bengal -743347</p>
-<br><br>
-<center>
-<div class="pass">
-<image src="https://cdn-icons-png.flaticon.com/512/295/295128.png" width="20%" height="20%" 
-style=" border-radius:100px; border:solid white 2px"
->
+
+</div>	
+<br><br><br><br><br><br><br>
 
 
-  <h1>Loging</h1>
-  <p class="log">Log in to go to the main website.</p>
-  <div id="login">
-    <input type="Number" class="password" placeholder="Enter Your ID" required><br><br>
-    <input type="password" id="password" placeholder="Enter Password" required><br><br>
-    <button onclick="checkPassword()">Submit</button>
-  </div>
 
-  <div id="content">
-   <image src="https://cdn-icons-gif.flaticon.com/17702/17702130.gif" height="130px">
-    <h1><font color="green">Sucsessfully</font></h1>
-    <p class="succ">Thank you very much for logging in to the page. Click Visit Now to go to my website.</p>
 
-    <a href="https://suman9907bit.github.io/Jana-online-service-/" target="blank" class="a"><div class="visit">
-    visit now</div></a>
-&nbsp;&nbsp;&nbsp;&nbsp;
-     <a href="#" class="a"><div class="cancel">
-    Cancel</div></a>
 
-    
-<br><br>
 
-  </div><br><br>
-</div></center>
 
-  <script>
-    function checkPassword() {
-      const password = document.getElementById("password").value;
-      const correctPassword = "7204093";
 
-      if (password === correctPassword) {
-        document.getElementById("content").style.display = "block";
-        document.getElementById("login").style.display = "none";
-      } else {
-        alert("Wrong password!");
-        document.getElementById("password").value = "";
-      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<image src="https://lh3.googleusercontent.com/p/AF1QipPFA0Tuu9ffla99leaOOAqqD-jIZ_UHXO_o0FWR=s1360-w1360-h1020-rw"  width="100%">
+<marquee style="background-color:#175555; speed:slow"><font color="white" face="arial rounded mt"><b>Well Come To JANA ONLINE SERVICE    Support By 24 X 7 Days       Toll Fee No: 18000 963256     Contact no: 9907992247 / 6297726894 Watchin for Thanks</b></font></marquee> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="width:100%">
+ <style>
+    :root{
+      --bg:#f4f8fb;
+      --card:#ffffff;
+      --accent:#00796b;
+      --muted:#6b7280;
+      --radius:12px;
+      --shadow:0 6px 18px rgba(8,27,37,0.08);
     }
-  </script><br><br><br></center>
+    *{box-sizing:border-box}
+    body{margin:0;font-family:"Segoe UI", Roboto, Arial, sans-serif;background:var(--bg);color:#123;}
+    .container{max-width:1100px;margin:28px auto;padding:18px;}
+    .hero{text-align:center;padding:22px 8px;margin-bottom:12px;}
+    .hero h1{margin:0;font-size:26px;color:var(--accent);}
+    .subtitle{color:var(--muted);margin-top:8px;}
+    .services{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:18px;}
+    .card{background:var(--card);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);transition:transform .18s ease, box-shadow .18s ease;cursor:pointer;display:flex;gap:12px;align-items:center;}
+    .card:hover{transform:translateY(-6px);box-shadow:0 10px 26px rgba(8,27,37,0.12);}
+    .icon{width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;background:linear-gradient(135deg,#e6fffa,#b2f5ea);box-shadow:inset 0 -6px 12px rgba(0,0,0,0.03);}
+    .card h4{margin:0;font-size:16px;color:var(--accent);}
+    .card p{margin:4px 0 0;color:var(--muted);font-size:13px;}
+    .modal-overlay{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(4,12,18,0.45);padding:20px;z-index:1000;}
+    .modal{width:100%;max-width:720px;background:var(--card);border-radius:14px;box-shadow:0 20px 50px rgba(2,12,20,0.35);overflow:hidden;}
+    .modal-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid #f0f4f6;}
+    .modal-head h3{margin:0;font-size:18px;color:var(--accent);}
+    .close-btn{background:none;border:0;font-size:22px;color:var(--accent);cursor:pointer;}
+    .modal-body{padding:18px 20px;}
+    .small-grid{display:flex;gap:12px;flex-wrap:wrap;}
+    .link-tile{flex:1 1 calc(33.333% - 8px);min-width:120px;background:linear-gradient(180deg,#ffffff,#fbfeff);border-radius:10px;padding:12px;box-shadow:0 6px 14px rgba(7,20,28,0.06);display:flex;flex-direction:column;gap:8px;align-items:flex-start;transition:transform .12s ease,box-shadow .12s ease;text-decoration:none;color:inherit;}
+    .link-tile:hover{transform:translateY(-6px);box-shadow:0 12px 28px rgba(7,20,28,0.10);}
+    .link-title{font-weight:700;color:#0a6b63;font-size:14px;}
+    .link-desc{font-size:12px;color:var(--muted);line-height:1.2;}
+    .modal-foot{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:14px 20px;border-top:1px solid #f0f4f6;flex-wrap:wrap;}
+    .contact-left{display:flex;gap:10px;align-items:center;}
+    .btn-outline{padding:8px 12px;border-radius:10px;border:2px solid var(--accent);background:white;color:var(--accent);text-decoration:none;font-weight:700;}
+    .btn-primary{padding:8px 12px;border-radius:10px;background:var(--accent);color:white;text-decoration:none;font-weight:700;}
+    .small-note{color:var(--muted);font-size:13px;}
+    @media (max-width:640px){.link-tile{flex:1 1 100%}.card{padding:14px}.icon{width:48px;height:48px}}
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <h1>Business Service Hub</h1>
+    <div class="subtitle">আপনার প্রয়োজনীয় সার্ভিসগুলো এখানে পাবেন। সার্ভিসে ক্লিক করলে popup খুলবে এবং কাজের অপশনগুলো দেখতে পারবেন।</div>
+  </div>
+  <section class="services" id="servicesGrid"></section>
+</div>
 
-<center>
-  <div style="background-color:rgba(0,0,0,0.2);width: 95%;border-radius: 5px;border:2px solid rgb(20, 107, 138);"><br>
-   <font size="10px" color="white">📢 </font> 
-  <marquee style="background-color:rgba(0,0,0,0.4);width:90%;color:white;border-radius: 20px;height:30px;border:1px solid white;">
-    
-    📢 নোটিশ: সাইটটিতে লগইন করতে হলে অনুমোদিত পাসওয়ার্ড থাকা আবশ্যক। নতুন পাসওয়ার্ড তৈরি বা অনুমোদনের জন্য যোগাযোগ করুন:
-    📞 9907992247 📞 6297726894.
+<div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-head">
+      <h3 id="modalTitle">Service Name</h3>
+      <button id="closeModal" class="close-btn" aria-label="Close">✖</button>
+    </div>
+    <div class="modal-body">
+      <h5>Quick Links</h5>
+      <div class="small-grid" id="smallGrid"></div>
+    </div>
+    <div class="modal-foot">
+      <div class="contact-left">
+        <a id="callBtn" class="btn-outline" href="#">📞 Call</a>
+        <a id="waBtn" class="btn-primary" href="#" target="_blank">💬 WhatsApp</a>
+      </div>
+      <div class="small-note">লিংকগুলো নতুন ট্যাবে খুলবে।</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const phoneNumber = "+919907992247";
+const whatsappNumber = "919907992247";
+
+const services = [
+  {name:'PAN Card Service',desc:'Apply / Correction / Download',icon:'🪪',links:[
+    {title:'Apply PAN',desc:'নতুন PAN',url:'https://eminencedigitech.in/members/login'},
+    {title:'Correction',desc:'সংশোধন',url:'https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html'},
+    {title:'Download',desc:'ই-প্যান ডাউনলোড',url:'https://www.incometax.gov.in/iec/foportal/'}
+  ]},
+  {name:'Voter Card Service',desc:'New / Correction / Download',icon:'🗳️',links:[
+    {title:'New Voter ID',desc:'নতুন ভোটার',url:'https://voterportal.eci.gov.in/'},
+    {title:'Search Your Name in Voter List',desc:'Search Your Name',url:'https://electoralsearch.eci.gov.in/uesfmempmlkypo'},
+    {title:'Electoral Roll',desc:'ডাউনলোড',url:'https://voters.eci.gov.in/download-eroll'}
+  ]},
+  {name:'Aadhaar Service',desc:'Download / Update / Status',icon:'🆔',links:[
+    {title:'Download Aadhaar',desc:'UIDAI',url:'https://myaadhaar.uidai.gov.in/'},
+    {title:'Verify E-mail and Mobile Number',desc:'Update Info',url:'https://myaadhaar.uidai.gov.in/verify-email-mobile/en'},
+    {title:'Check Status',desc:'Status Check',url:'https://myaadhaar.uidai.gov.in/CheckAadhaarStatus/en'}
+  ]},
+  {name:'Ration Card Service',desc:'New / Correction / Download',icon:'🍚',links:[
+    {title:'Apply New',desc:'নতুন রেশন',url:'https://food.wb.gov.in/'},
+    {title:'Update Info',desc:'সংশোধন',url:'https://wbpds.wb.gov.in/(S(mbtyty5hpc1dhvmpjh0oxsbs))/Benificiary_Deatils_Update_by_Aadhaar.aspx'},
+    {title:'Download',desc:'ডাউনলোড',url:'https://wbpds.wb.gov.in/(S(3p4z4fj5qrqfdd32or5fym1a))/E_Card_Download.aspx'},
   
-  </marquee><br><br></center>
-</biv><br>
-<center>
-  <div style="color:white;
-            background-color:rgba(0,0,0,0.6);
-            border-radius: 10px;
-            width:85%;
-            padding: 20px;
-            border:2px solid white;padding: 50px;text-align: justify;">
-            
+ {title:'Ration Card Aadharlink',desc:'Aadharlink',url:'https://wbpds.wb.gov.in/(S(ajbdafy52ihbmahoixmtrmqh))/Ekyc_otp.aspx'},
 
-<u>📢 নোটিশ:</u> &nbsp;&nbsp;&nbsp;
+{title:'Ration Card status chack',desc:'Status chack',url:'https://wbpds.wb.gov.in/(S(gqmijpx1clyryt5dvolqbw4g))/CheckApplicationStatus.aspx'}
 
-এটি একটি ওয়েব ওয়ার্ক ওয়েবসাইট। সাইটটিতে লগইন করতে হলে অনুমোদিত পাসওয়ার্ড থাকা আবশ্যক।
+]},
+  {name:'Train Ticket Booking',desc:'IRCTC & Local',icon:'🚆',links:[
+    {title:'IRCTC',desc:'Train Booking',url:'https://www.irctc.co.in/'},
+    {title:'PNR Status',desc:'Check Status',url:'https://indianrail.gov.in/enquiry/PNR/PnrEnquiry.html?locale=en2,'},
+ {title:'IRCTC Agent Interface',desc:'Agent Interface',url:'https://www.operations.irctc.co.in/AgentInterface/mainpage.jsf'}
+  ]},
+  {name:'Bus Ticket Booking',desc:'Online / Intercity',icon:'🚌',links:[
+    {title:'RedBus',desc:'Online Booking',url:'https://www.redbus.in/'},
+    {title:'State Transport',desc:'Local Bus',url:'https://www.wbtransport.gov.in/'}
+  ]},
+  {name:'Mobile Recharge',desc:'Prepaid / Postpaid',icon:'📱',links:[
+    {title:'Airtel',desc:'Prepaid/Postpaid',url:'https://www.airtel.in/recharge'},
+    {title:'Jio',desc:'Prepaid/Postpaid',url:'https://www.jio.com/'}
+  ]},
+  {name:'DTH Recharge',desc:'Dish TV / Tata Sky',icon:'📺',links:[
+    {title:'Tata Sky',desc:'Recharge',url:'https://www.tatasky.com/'},
+    {title:'Dish TV',desc:'Recharge',url:'https://www.dishtv.in/'}
+  ]},
+  {name:'Electricity Bill Pay',desc:'Pay Bills Online',icon:'💡',links:[
+    {title:'WBSEDCL',desc:'Electricity West Bengal',url:'https://www.wbsedcl.in/'},
+    {title:'Bill Pay',desc:'Electric bill pay',url:'https://portal.wbsedcl.in/onlinepay/OnlineBillPay.jsp'},
+  {title:'Consumer loging',desc:'Your personal work',url:'https://portal.wbsedcl.in/ConsumerLogin/Consumer_Login.jsp'},
+  {title:'Recipt Download',desc:'WB Payment Receipt',url:'https://portal.wbsedcl.in/webdynpro/resources/wbsedcl/wbpaymentreceipt/ViewPaymentReceipt?payReceipt=Y#'},
 
-⚠️ মনে রাখবেন, শুধুমাত্র নির্ধারিত ও বৈধ পাসওয়ার্ড ব্যবহার করেই সাইন ইন করা যাবে। একইসঙ্গে, চারবার ভুল পাসওয়ার্ড দেওয়ার চেষ্টা করলে অ্যাক্সেস বন্ধ হয়ে যেতে পারে।
+  {title:'No deu certificat',desc:'WEST BENGAL STATE ELECTRICITY DISTRIBUTION COMPANY LIMITED',url:'https://portal.wbsedcl.in/irj/go/km/docs/bills/IFRAME/NoDuesCertificate.html'}
 
-✅ নতুন পাসওয়ার্ড তৈরি বা অনুমোদনের জন্য অনুগ্রহ করে নিচের নম্বরগুলোর যেকোনো একটিতে যোগাযোগ করুন:
-📞 9907992247
-📞 6297726894.<br><br><br>
+  ]},
+  {name:'Loan Payment / EMI',desc:'Banks / Finance',icon:'🏦',links:[
+    {title:'HDFC Bank EMI',desc:'Pay EMI',url:'https://www.hdfcbank.com/'},
+    {title:'SBI Loan Pay',desc:'Pay EMI',url:'https://www.onlinesbi.com/'}
+  ]},
+  {name:'Land Records',desc:'Khatian / Plot Check',icon:'🌍',links:[
+    {title:'West Bengal Land',desc:'Land Info',url:'https://banglarbhumi.gov.in/'}
+  ]},
+  {name:'Caste Certificate',desc:'Apply / Download',icon:'📜',links:[
+    {title:'OBC Apply Online',desc:'Caste Cert.',url:'https://castcertificatewb.gov.in/application_revalidate'},
+ {title:'SC/ST Apply Online',desc:'Caste Cert.',url:'https://castcertificatewb.gov.in/application'},
+ {title:'SC/ST Search application',desc:'Caste Cert.',url:'https://castcertificatewb.gov.in/searchapplication/viewcertificatedetails'},
 
-<u>📢 Notice: </u> &nbsp;&nbsp;&nbsp;&nbsp;
+{title:'OBC Search application',desc:'Caste Cert.',url:'https://castcertificatewb.gov.in/searchapplication/viewcertificatedetails'},
 
-This is a Web Work website. A valid password is required to sign in.
+ {title:'ST/SC Download Certificat',desc:'Caste Cert.',url:'https://castcertificatewb.gov.in/downlaodsigncertificate'},
 
-⚠️ Please note that access will only be granted with an authorized password. After four failed login attempts, your access may be temporarily blocked.
+ {title:'OBC Download Certificat',desc:'Caste Cert.',url:'https://castcertificatewb.gov.in/downlaod_signcertificate'},
 
-✅ To create or request a valid password, please contact one of the following numbers:
-📞 9907992247
-📞 6297726894
+ {title:'Cast certificat protal',desc:'Caste Cert.',url:'https://castcertificatewb.gov.in/'}
 
-<br><br><br><br>
+  ]},
+  {name:'Online Work Services',desc:'Freelance / Documents',icon:'💻',links:[
+    {title:'Freelance Tasks',desc:'Online Work',url:'https://www.upwork.com/'},
+    {title:'Document Help',desc:'Form Filling',url:'https://www.janaonlineservice.in/'}
+  ]}
+];
 
-  </div></center>
-  
+const grid=document.getElementById('servicesGrid');
+const modalOverlay=document.getElementById('modalOverlay');
+const modalTitle=document.getElementById('modalTitle');
+const smallGrid=document.getElementById('smallGrid');
+const closeModalBtn=document.getElementById('closeModal');
+const callBtn=document.getElementById('callBtn');
+const waBtn=document.getElementById('waBtn');
 
-  
-  <br><br><br>
+services.forEach(s=>{
+  const card=document.createElement('article');
+  card.className='card';
+  card.setAttribute('tabindex','0');
+  card.innerHTML=`<div class="icon">${s.icon}</div>
+    <div><h4>${s.name}</h4><p>${s.desc}</p></div>`;
+  card.addEventListener('click',()=>openModal(s));
+  card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ') openModal(s);});
+  grid.appendChild(card);
+});
+
+function openModal(service){
+  modalTitle.textContent=service.name;
+  callBtn.href=`tel:${phoneNumber}`;
+  waBtn.href=`https://wa.me/${whatsappNumber}?text=Hi%2C%20I%20want%20to%20know%20about%20${encodeURIComponent(service.name)}`;
+  smallGrid.innerHTML='';
+  service.links?.forEach(l=>{
+    const a=document.createElement('a');
+    a.className='link-tile';
+    a.href=l.url;
+    a.target='_blank';
+    a.rel='noopener noreferrer';
+    a.innerHTML=`<div class="link-title">${l.title}</div><div class="link-desc">${l.desc||''}</div>`;
+    smallGrid.appendChild(a);
+  });
+  modalOverlay.style.display='flex';
+  modalOverlay.setAttribute('aria-hidden','false');
+  closeModalBtn.focus();
+}
+
+closeModalBtn.addEventListener('click',()=>closeModal());
+modalOverlay.addEventListener('click',e=>{if(e.target===modalOverlay) closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modalOverlay.style.display==='flex') closeModal();});
+function closeModal(){modalOverlay.style.display='none';modalOverlay.setAttribute('aria-hidden','true');}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Popup background */
+    .popup-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    /* Popup box */
+    .popup-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+      animation: zoomIn 0.3s ease;
+    }
+
+    .popup-box h2 {
+      margin: 0 0 10px;
+      font-size: 1.5rem;
+      color: teal;
+    }
+
+    .popup-box p {
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    .popup-box button {
+      padding: 10px 20px;
+      border: none;
+      background: teal;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    @keyframes zoomIn {
+      from {transform: scale(0.7);}
+      to {transform: scale(1);}
+    }
+
+    /* Responsive small device */
+    @media (max-width: 480px) {
+      .popup-box h2 { font-size: 1.2rem; }
+      .popup-box p { font-size: 0.9rem; }
+      .popup-box button { font-size: 0.85rem; padding: 8px 15px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="popup-overlay" id="welcomePopup">
+  <div class="popup-box">
+    <h2>Welcome!</h2>
+    <p id="deviceMsg">Detecting your device...</p>
+    <button onclick="closePopup()">OK</button>
+  </div>
+</div>
+
+<script>
+  // Device detect function
+  function detectDevice() {
+    let deviceMsg = document.getElementById("deviceMsg");
+    let userAgent = navigator.userAgent.toLowerCase();
+
+    if (/mobile|android|iphone|ipad|tablet/.test(userAgent)) {
+      deviceMsg.textContent = "Welcome Mobile User 📱";
+    } else {
+      deviceMsg.textContent = "Welcome Computer User 💻";
+    }
+  }
+
+  // Close popup
+  function closePopup() {
+    document.getElementById("welcomePopup").style.display = "none";
+  }
+
+  // Run on page reload
+  window.onload = detectDevice;
+</script>
+
+<script>
+  function logoutPage() {
+    if(confirm("আপনি কি সত্যিই লগআউট বা পেজ থেকে বের হতে চান?")){
+      window.close(); // শুধুমাত্র window open করা হলে কাজ করবে
+      // অথবা redirect করতে চাইলে uncomment করুন:
+      // window.location.href="about:blank";
+    }
+  }
+</script>
+
+
+
+
+<!-- Login Overlay with background image -->
+<div id="loginOverlay" style="
+    position: fixed;
+    inset: 0;
+    background: url('https://i.pinimg.com/736x/18/36/f3/1836f3eb3722fa136c9e975c453f3009.jpg') center/cover no-repeat; /* desktop default */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    font-family: Arial, sans-serif;
+    color: white;
+">
+  <div style="background:rgba(0,0,0,0.4); padding:30px; border-radius:12px; width:90%; max-width:400px; text-align:center;">
+    <h2>Login Required</h2>
+    <input type="text" id="loginUser" placeholder="Username" style="width:80%; padding:10px; margin:10px 0; border-radius:6px; border:none; font-size:16px;">
+    <input type="password" id="loginPass" placeholder="Password" style="width:80%; padding:10px; margin:10px 0; border-radius:6px; border:none; font-size:16px;">
+    <button onclick="checkLogin()" style="padding:10px 20px; font-size:16px; border:none; border-radius:6px; cursor:pointer; background:teal; color:white;">Login</button>
+    <p id="loginError" style="color:red; font-size:14px; margin-top:8px; display:none;">Incorrect username or password</p>
+  </div>
+</div>
+
+<style>
+  /* Mobile background */
+  @media (max-width: 668px) {
+    #loginOverlay {
+      background: url('https://i.pinimg.com/736x/f9/3d/78/f93d78aa63ca840c4ef57ae7b1387e99.jpg') center/cover no-repeat;
+    }
+  }
+</style>
+
+<script>
+  const correctUser = "admin";
+  const correctPass = "7204093";
+
+  function checkLogin() {
+    const user = document.getElementById("loginUser").value;
+    const pass = document.getElementById("loginPass").value;
+    const errorMsg = document.getElementById("loginError");
+
+    if(user === correctUser && pass === correctPass){
+      document.getElementById("loginOverlay").style.display = "none";
+      sessionStorage.setItem("loggedIn", "true");
+    } else {
+      errorMsg.style.display = "block";
+    }
+  }
+
+  // Keep page unlocked if session exists
+  window.onload = function(){
+    if(sessionStorage.getItem("loggedIn") === "true"){
+      document.getElementById("loginOverlay").style.display = "none";
+    }
+  }
+</script>
+
+
+
+
+
+
+<footer style="
+    background: linear-gradient(90deg, #008080, #000);
+    color: #fff;
+    text-align: center;
+    padding: 15px 10px;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+">
+    &copy; 2025 Jana Online Service | All rights reserved | 
+    <a href="mailto:janaonlineservice4@gmail.com" style="color:#00ffff; text-decoration:none;">Contact Us</a>
+</footer>
+
+
 </body>
 </html>
+	
