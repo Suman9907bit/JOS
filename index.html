@@ -853,30 +853,50 @@ function closeModal(){modalOverlay.style.display='none';modalOverlay.setAttribut
   }
 </style>
 
-<script>
-  const correctUser = "admin";
-  const correctPass = "7204093";
+ <script>
+async function checkLogin() {
+  const user = document.getElementById("loginUser").value.trim();
+  const pass = document.getElementById("loginPass").value.trim();
+  const errorMsg = document.getElementById("loginError");
 
-  function checkLogin() {
-    const user = document.getElementById("loginUser").value;
-    const pass = document.getElementById("loginPass").value;
-    const errorMsg = document.getElementById("loginError");
+  if (!user || !pass) {
+    errorMsg.innerText = "Please enter username and password";
+    errorMsg.style.display = "block";
+    return;
+  }
 
-    if(user === correctUser && pass === correctPass){
+  const baseUrl = "https://script.google.com/macros/s/AKfycbzsnQST3rQAYEZoOL5cjQFzJ7EHF4dTmD7XZBPsN3SV448J2C51VLKhYTYOjpKauMvT/exec";
+  
+  const url = baseUrl + "?username=" + encodeURIComponent(user) + "&password=" + encodeURIComponent(pass);
+
+  try {
+    const response = await fetch(url);
+    const result = await response.text();
+
+    if (result.trim() === "success") {
       document.getElementById("loginOverlay").style.display = "none";
       sessionStorage.setItem("loggedIn", "true");
     } else {
+      errorMsg.innerText = "Incorrect username or password";
       errorMsg.style.display = "block";
     }
+  } catch (error) {
+    console.error(error);
+    alert("Server Connection Failed!");
   }
+}
 
-  // Keep page unlocked if session exists
-  window.onload = function(){
-    if(sessionStorage.getItem("loggedIn") === "true"){
-      document.getElementById("loginOverlay").style.display = "none";
-    }
+/* Page refresh হলে আবার login না চাইলে */
+window.onload = function() {
+  if (sessionStorage.getItem("loggedIn") === "true") {
+    document.getElementById("loginOverlay").style.display = "none";
   }
+};
 </script>
+
+
+
+
 
 
 
