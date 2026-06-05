@@ -301,6 +301,8 @@ font-weight: 650;
 </span>
 <span class="lg"> Jana Online Service</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <span class="lg"><a href="https://suman9907bit.github.io/Privecy-sft/"><i class="fas fa-cogs"></i></span></a></span>
+<a href="https://suman9907bit.github.io/compose/">
+<image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCvlUJROxMicQacomk7nLqPG-eLqvaY_pS4g&s" width="50px"></a>
 </div>
 <div class="dd">
 <button class="dd-btn"><font size="5" face="arial rounded mt">&#9776 &nbsp; Menu</font></button>
@@ -574,9 +576,11 @@ const services = [
     {title:'Electoral Roll',desc:'ডাউনলোড',url:'https://voters.eci.gov.in/download-eroll'}
   ]},
   {name:'Aadhaar Service',desc:'Download / Update / Status',icon:'🆔',links:[
-    {title:'Download Aadhaar',desc:'UIDAI',url:'https://myaadhaar.uidai.gov.in/'},
+    {title:'MY Aadhaar Login',desc:'Download Aadhar, Bank Sedding, Etc',url:'https://myaadhaar.uidai.gov.in/'},
     {title:'Verify E-mail and Mobile Number',desc:'Update Info',url:'https://myaadhaar.uidai.gov.in/verify-email-mobile/en'},
-    {title:'Check Status',desc:'Status Check',url:'https://myaadhaar.uidai.gov.in/CheckAadhaarStatus/en'}
+    {title:'Check Status',desc:'Status Check',url:'https://myaadhaar.uidai.gov.in/CheckAadhaarStatus/en'},
+     {title:'Aadhar To DBT Link',desc:'Bank DBT Link,DBT Link Chack',url:'https://www.npci.org.in/?utm_source=google&utm_medium=cpc&utm_campaign=npci-corporate&utm_id=google-brandcampaign-npcicorporate2026-generic-textads-english-NA-IA&gad_source=1&gad_campaignid=23802762176&gbraid=0AAAAA_kVPyyGuH9qoau_TSyFn-ff60T8k&gclid=CjwKCAjwxITRBhBYEiwA6mZm7e9dEVGVTNN9DViSuK5vorgwLiQ4_K3kKvbQ680D4a1E3we811PoQxoCgA8QAvD_BwE'},
+{title:'New Aadhar Login',desc:'All work to Aadhard',url:'https://myaadhaar.uidai.gov.in/login'}
   ]},
   {name:'Ration Card Service',desc:'New / Correction / Download',icon:'🍚',links:[
     {title:'Apply New',desc:'নতুন রেশন',url:'https://wbpds.wb.gov.in/rcmsnew/AadhaarAuthenticationLogin/Index'},
@@ -638,6 +642,10 @@ const services = [
   {name:'Online Work Services',desc:'Freelance / Documents',icon:'💻',links:[
     {title:'Freelance Tasks',desc:'Online Work',url:'https://www.upwork.com/'},
     {title:'Document Help',desc:'Form Filling',url:'https://www.janaonlineservice.in/'}
+  ]},
+{name:'Govorment Scheem',desc:'Online Forom / Documents',icon:'G',links:[
+    {title:'Arnnopunna Yosona',desc:'Family Level Data Collection Portal',url:'https://socialsecurity.wb.gov.in/'},
+    {title:'Juva sakti',desc:'বাংলার যুব শক্তি',url:'https://yubasathi.wb.gov.in/'}
   ]}
 ];
 
@@ -834,9 +842,9 @@ function closeModal(){modalOverlay.style.display='none';modalOverlay.setAttribut
     z-index: 9999;
     font-family: Arial, sans-serif;
     color: white;
-">
+"><br><br><br><br>
   <div style="background:rgba(0,0,0,0.4); padding:30px; border-radius:12px; width:90%; max-width:400px; text-align:center;">
-    <h2>Login Required</h2>
+    <h2>JANA ONLINE SERVIVE<h3 style="color:yellow;">Login Required</h3></h2>
     <input type="text" id="loginUser" placeholder="Username" style="width:80%; padding:10px; margin:10px 0; border-radius:6px; border:none; font-size:16px;">
     <input type="password" id="loginPass" placeholder="Password" style="width:80%; padding:10px; margin:10px 0; border-radius:6px; border:none; font-size:16px;">
     <button onclick="checkLogin()" style="padding:10px 20px; font-size:16px; border:none; border-radius:6px; cursor:pointer; background:teal; color:white;">Login</button>
