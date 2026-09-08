@@ -29,7 +29,7 @@
 
     .hero{
       background:var(--bg-grad);
-      color:white;
+      color:rgb(240, 206, 12);
       padding:28px;
       border-radius:12px;
       margin-bottom:20px;
@@ -38,8 +38,8 @@
       flex-wrap:wrap;
       align-items:center;
     }
-    .hero .title{ font-size:20px; font-weight:700; }
-    .hero .subtitle{ font-size:14px; opacity:.95; color:#eaf0ff; margin-top:6px; }
+    .hero .title{ font-size:20px; font-weight:700;}
+    .hero .subtitle{ font-size:14px; opacity:.95; color:#1f1e02; margin-top:6px; }
     .cta{
       background:var(--blue); color:white; border:none;
       padding:10px 16px; border-radius:10px; cursor:pointer;
@@ -124,7 +124,7 @@ text-decoration: none; background:teal;
 
 .dd-content > a {text-decoration:none;
 		display:block;
-		color:teal;	
+		color:rgb(1, 11, 12);	
 		}
 
 
@@ -494,10 +494,10 @@ font-weight: 650;
 <div style="width:100%">
  <style>
     :root{
-      --bg:#f4f8fb;
-      --card:#ffffff;
-      --accent:#00796b;
-      --muted:#6b7280;
+      --bg:#f5f7f8;
+      --card:#dbe1e4;
+      --accent:#2e02309f;
+      --muted:#f336758a;
       --radius:12px;
       --shadow:0 6px 18px rgba(8,27,37,0.08);
     }
@@ -566,11 +566,21 @@ const phoneNumber = "+919907992247";
 const whatsappNumber = "919907992247";
 
 const services = [
-  {name:'PAN Card Service',desc:'Apply / Correction / Download',icon:'🪪',links:[
+  {name:'UTI PAN Card Service',desc:'Apply / Correction / Download',icon:'🪪',links:[
     {title:'Apply PAN',desc:'নতুন PAN',url:'https://eminencedigitech.com/members/login'},
-    {title:'Correction',desc:'সংশোধন',url:'https://www.pan.utiitsl.com/panonline_ipg/forms/csfPan.html/csfPreForm'},
-    {title:'Download',desc:'ই-প্যান ডাউনলোড',url:'https://onlineservices.proteantech.in/paam/requestAndDownloadEPAN.html'}
+    {title:'Correction',desc:'সংশোধন',url:'https://www.pan.utiitsl.com/PAN_ONLINE/addresschangeHome.action'},
+    {title:'Download',desc:'ই-প্যান ডাউনলোড',url:'https://www.pan.utiitsl.com/PAN_ONLINE/ePANCardHome'},
+     {title:'PAN Status Chack',desc:'Status Chack',url:'https://www.trackpan.utiitsl.com/PANONLINE/forms/TrackPan/trackApp#forward'},
+     {title:'UTI PROTAL',desc:'Main Protal',url:'https://www.pan.utiitsl.com/'}
   ]},
+ {name:'NSDL PAN Card Service',desc:'Apply / Correction / Download',icon:'🪪',links:[
+    {title:'Apply PAN',desc:'নতুন PAN',url:'https://eminencedigitech.com/members/login'},
+    {title:'Correction',desc:'সংশোধন',url:'https://onlineservices.proteantech.in/paam/endUserAddressUpdate.html'},
+    {title:'Download',desc:'ই-প্যান ডাউনলোড',url:'https://onlineservices.proteantech.in/paam/requestAndDownloadEPAN.html'},
+     {title:'PAN Status Chack',desc:'Status Chack',url:'https://tin.tin.proteantech.in/pantan/StatusTrack.html'},
+     {title:'NSDL PROTAL',desc:'Main Protal',url:'https://onlineservices.proteantech.in/paam/endUserRegisterContact.html'}
+  ]},
+  
   {name:'Voter Card Service',desc:'New / Correction / Download',icon:'🗳️',links:[
     {title:'New Voter ID',desc:'নতুন ভোটার',url:'https://voters.eci.gov.in/form6'},
     {title:'Search Your Name in Voter List',desc:'Search Your Name',url:'https://electoralsearch.eci.gov.in/uesfmempmlkypo'},
